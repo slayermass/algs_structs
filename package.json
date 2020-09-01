@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "slayermas's utils",
   "main": "src/Structures/PriorityQueue/index.js",
-  "scripts": {
-    "test": "echo \\\\\\\\\\\\\\\"Error: no src/Structures/PriorityQueue specified\\\\\\\\\\\\\\\" && exit 1"
-  },
+  "scripts": {},
   "author": "slayermass",
   "license": "ISC",
   "devDependencies": {
