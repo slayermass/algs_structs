@@ -1,0 +1,14 @@
+{
+  "name": "algs_structs",
+  "version": "1.0.0",
+  "description": "slayermas's utils",
+  "main": "src/Structures/PriorityQueue/index.js",
+  "scripts": {
+    "test": "echo \\\\\\\\\\\\\\\"Error: no src/Structures/PriorityQueue specified\\\\\\\\\\\\\\\" && exit 1"
+  },
+  "author": "slayermass",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.4.2"
+  }
+}
