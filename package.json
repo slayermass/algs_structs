@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "slayermas's utils",
   "main": "src/Structures/PriorityQueue/index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "jest"
+  },
   "author": "slayermass",
   "license": "ISC",
   "devDependencies": {
