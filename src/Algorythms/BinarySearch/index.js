@@ -1,6 +1,9 @@
 /**
  * двоичный(бинарный) поиск
  * arr должен быть отсортирован
+ *
+ * сложность  - O(log n)
+ * память     - O(n)
  */
 
 /** счетчики для подсчета итераций */
@@ -20,9 +23,11 @@ const binarySearchRecursive = (arr, val) => {
 
   if (middleVal === val) {
     return middleVal;
-  } else if (val < middleVal && arr.length > 1) {
+  }
+  if (val < middleVal && arr.length > 1) {
     return binarySearchRecursive(arr.splice(0, middle), val);
-  } else if (val > middleVal && arr.length > 1) {
+  }
+  if (val > middleVal && arr.length > 1) {
     return binarySearchRecursive(arr.splice(middle, Number.MAX_VALUE), val);
   }
   return 'not found';
