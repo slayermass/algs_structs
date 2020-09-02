@@ -1,7 +1,7 @@
 const Queue = require('./index');
 
 describe('--- Queue ---', () => {
-  test('enqueue-dequeue-size-getBy', async () => {
+  test('enqueue-dequeue-size-getBy', () => {
     const model = new Queue();
 
     expect(model.size).toBe(0);
@@ -15,7 +15,7 @@ describe('--- Queue ---', () => {
     expect(dequeued).toBe('val');
   });
 
-  test('dequeue empty', async () => {
+  test('dequeue empty', () => {
     const model = new Queue();
     expect(model.dequeue()).toBe(undefined);
   });
@@ -26,7 +26,7 @@ describe('--- Queue ---', () => {
     expect(model.last()).toBe(undefined);
   });
 
-  test('first-last', async () => {
+  test('first-last', () => {
     const model = new Queue();
 
     model.enqueue('val');
@@ -40,7 +40,7 @@ describe('--- Queue ---', () => {
     expect(last).toBe(666);
   });
 
-  test('isEmpty', async () => {
+  test('isEmpty', () => {
     const model = new Queue();
 
     expect(model.isEmpty).toBe(true);
@@ -50,7 +50,7 @@ describe('--- Queue ---', () => {
     expect(model.isEmpty).toBe(false);
   });
 
-  test('clear', async () => {
+  test('clear', () => {
     const model = new Queue();
 
     model.enqueue('val');

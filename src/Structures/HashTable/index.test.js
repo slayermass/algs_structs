@@ -11,7 +11,7 @@ describe('--- HashTable ---', () => {
     expect(model.lookup('model_key')).toBe(undefined);
   });
 
-  test('multiple value key', async () => {
+  test('multiple value key', () => {
     const model = new HashTable();
 
     model.add('model_key', 'model_value');
@@ -21,7 +21,7 @@ describe('--- HashTable ---', () => {
     expect(model.lookup('model_key')).toBe('model_value_MORE');
   });
 
-  test('multiple value the same hash key', async () => {
+  test('multiple value the same hash key', () => {
     const model = new HashTable();
 
     // разные значения, но один хэш
@@ -33,7 +33,7 @@ describe('--- HashTable ---', () => {
     expect(model.lookup('')).toBe('model_value_MORE');
   });
 
-  test('key doesn\'t exists', async () => {
+  test('key doesn\'t exists', () => {
     const model = new HashTable();
 
     expect(model.remove('model_key')).toBe(false);

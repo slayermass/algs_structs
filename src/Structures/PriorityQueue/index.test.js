@@ -1,7 +1,7 @@
 const PriorityQueue = require('./index');
 
 describe('--- PriorityQueue ---', () => {
-  test('insert at the middle', async () => {
+  test('insert at the middle', () => {
     const model = new PriorityQueue([['f9', 9], ['f10', 10], ['f30', 30], ['f50', 50]]);
     const val = ['ins20', 20];
 
@@ -14,7 +14,7 @@ describe('--- PriorityQueue ---', () => {
     expect(model.last()).toEqual(['f50', 50]);
   });
 
-  test('insert at the end', async () => {
+  test('insert at the end', () => {
     const model = new PriorityQueue([['f9', 9], ['f10', 10], ['f30', 30], ['f50', 50]]);
     const val = ['ins200', 200];
 
@@ -26,7 +26,7 @@ describe('--- PriorityQueue ---', () => {
     expect(model.last()).toEqual(val);
   });
 
-  test('insert at the exist position', async () => {
+  test('insert at the exist position', () => {
     const model = new PriorityQueue([['f9', 9], ['f10', 10], ['f30', 30], ['f50', 50]]);
     const val = ['f10', 10];
 
