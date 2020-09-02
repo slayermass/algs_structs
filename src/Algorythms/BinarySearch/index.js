@@ -3,10 +3,20 @@
  * arr должен быть отсортирован
  */
 
+/** счетчики для подсчета итераций */
+let bsrCount = 0;
+const clearBSRCount = () => bsrCount = 0;
+const getBSRCount = () => bsrCount;
+
+let bslCount = 0;
+const clearBSLCount = () => bslCount = 0;
+const getBSLCount = () => bslCount;
+
 /** рекурсивный поиск */
 const binarySearchRecursive = (arr, val) => {
   const middle = Math.floor(arr.length / 2);
   const middleVal = arr[middle];
+  bsrCount += 1;
 
   if (middleVal === val) {
     return middleVal;
@@ -26,6 +36,7 @@ const binarySearchLoop = (arr, val) => {
   while (start <= end) {
     const middle = Math.floor((start + end) / 2);
     const middleVal = arr[middle];
+    bslCount += 1;
 
     if (middleVal === val) {
       return middleVal;
@@ -40,4 +51,7 @@ const binarySearchLoop = (arr, val) => {
   return 'not found';
 }
 
-module.exports = { binarySearchRecursive, binarySearchLoop };
+module.exports = {
+  binarySearchRecursive, getBSRCount, clearBSRCount,
+  binarySearchLoop, getBSLCount, clearBSLCount,
+};

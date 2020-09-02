@@ -1,10 +1,20 @@
-const { binarySearchRecursive, binarySearchLoop } = require('./index');
+const {
+  binarySearchRecursive, getBSRCount, clearBSRCount,
+  binarySearchLoop, getBSLCount, clearBSLCount,
+} = require('./index');
 
 describe('--- binarySearchRecursive ---', () => {
   test('found values', () => {
-    expect(binarySearchRecursive([1,2,3,4,5], 4)).toEqual(4);
+    expect(binarySearchRecursive([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16], 4)).toEqual(4);
+    expect(getBSRCount()).toBe(4);
+
+    clearBSRCount();
     expect(binarySearchRecursive([1,2,3,4,5,6], 1)).toEqual(1);
+    expect(getBSRCount()).toBe(3);
+
+    clearBSRCount();
     expect(binarySearchRecursive([1], 1)).toEqual(1);
+    expect(getBSRCount()).toBe(1);
   });
 
   test('no found values', () => {
@@ -22,9 +32,16 @@ describe('--- binarySearchRecursive ---', () => {
 
 describe('--- binarySearchLoop ---', () => {
   test('found values', () => {
-    expect(binarySearchLoop([1,2,3,4,5], 4)).toEqual(4);
+    expect(binarySearchLoop([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16], 4)).toEqual(4);
+    expect(getBSLCount()).toBe(2);
+
+    clearBSLCount();
     expect(binarySearchLoop([1,2,3,4,5,6], 1)).toEqual(1);
+    expect(getBSLCount()).toBe(2);
+
+    clearBSLCount();
     expect(binarySearchLoop([1], 1)).toEqual(1);
+    expect(getBSLCount()).toBe(1);
   });
 
   test('no found values', () => {
