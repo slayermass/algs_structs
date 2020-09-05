@@ -1,1 +1,1 @@
-lodash' like functions 
+lodash-like functions 
