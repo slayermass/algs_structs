@@ -26,7 +26,7 @@ describe('--- isEmptyValue ---', () => {
     expect(isEmptyValue(new Error('message'))).toBe(false);
   });
 
-  test('prop tests', () => {
+  test('proto tests', () => {
     const obj = {'prop': 'mine'};
     const obj2 = Object.assign({}, obj);
 
@@ -44,5 +44,13 @@ describe('--- isEmptyValue ---', () => {
 
     expect(isEmptyValue(Child)).toBe(true);
     expect(isEmptyValue(ChildWithName)).toBe(false);
+
+    const Ancestor = {'hello': 'da'};
+    const rObj = {};
+    rObj.__proto__ = Ancestor;
+
+    expect(isEmptyValue(rObj)).toBe(true);
+    rObj.test = 1;
+    expect(isEmptyValue(rObj)).toBe(false);
   });
 });
