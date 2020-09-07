@@ -14,7 +14,7 @@ const mostFrequentValueInArray = (arr) => {
   }
 
   for (let i = 0; i < innerArr.length; i++) {
-    // пропускать уже просмотренные элементы(повторяющиеся значения) и undefined
+    // пропускать уже просмотренные элементы(повторяющиеся значения)
     if (watchedItems[innerArr[i]]) {
       continue;
     }
