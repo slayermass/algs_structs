@@ -1,7 +1,7 @@
 {
   "name": "algs_structs",
   "version": "1.0.0",
-  "description": "slayermas's utils",
+  "description": "slayermass' utils",
   "main": "src/Structures/PriorityQueue/index.js",
   "scripts": {
     "test": "jest"
@@ -9,6 +9,6 @@
   "author": "slayermass",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^26.4.2"
+    "jest": "^29.0.1"
   }
 }
