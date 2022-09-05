@@ -17,8 +17,9 @@ const getBSLCount = () => bslCount;
 
 /** рекурсивный поиск */
 const binarySearchRecursive = (arr, val) => {
-  const middle = Math.floor(arr.length / 2);
+  const middle = Math.floor(arr.length / 2); // important as Math.ceil([1].length / 2 (0.5)]) = 1
   const middleVal = arr[middle];
+
   bsrCount += 1;
 
   if (middleVal === val) {
