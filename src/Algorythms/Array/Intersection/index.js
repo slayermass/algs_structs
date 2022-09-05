@@ -18,7 +18,8 @@ const arrayIntersect = (arr1, arr2) => {
   const returnArr = [];
   let i = 0;
   let j = 0;
-  while(i < arr1.length &&j < arr2.length) {
+
+  while (i < arr1.length && j < arr2.length) {
     if (arr1[i] < arr2[j]) {
       i++;
     } else if (arr1[i] > arr2[j]) {
@@ -29,14 +30,22 @@ const arrayIntersect = (arr1, arr2) => {
       j++;
     }
   }
+
   return returnArr;
 }
 
 module.exports = arrayIntersect;
 
 /**
-  // неверное решение через Set
-  const f = (arr1, arr2) => {
+ // неверное популярное решение
+ const f = (arr1, arr2) => arr1.filter(x => arr2.includes(x));
+ console.log(f([1, 2, 2, 4, 2], [2, 2, 2, 2])); // [ 2, 2, 2 ]
+ console.log(f([2, 2, 2, 2], [1, 2, 2, 4, 2])); // [ 2, 2, 2, 2 ] !
+ */
+
+/**
+ // неверное решение через Set
+ const f = (arr1, arr2) => {
     const arr = [];
     const uniq = new Set(arr2);
     arr1.forEach((a) => {
@@ -46,7 +55,7 @@ module.exports = arrayIntersect;
     });
     return arr;
   }
-  console.log(f([1,2,2,4], [2,2,2,2])); // [2,2]
-  console.log(f([2,2,2,2], [1,2,2,4])); // [2,2,2,2]
-  console.log(f([1,5,9,500], [5,6,7,9,666])); // [5,9]
+ console.log(f([1,2,2,4], [2,2,2,2])); // [2,2]
+ console.log(f([2,2,2,2], [1,2,2,4])); // [2,2,2,2] !
+ console.log(f([1,5,9,500], [5,6,7,9,666])); // [5,9]
  */
