@@ -1,41 +1,66 @@
 const HashTable = require('./index');
 
 describe('--- HashTable ---', () => {
-  test('base', async () => {
-    const model = new HashTable();
+  let model;
 
-    model.add('model_key', 'model_value');
+  beforeEach(() => {
+    model = new HashTable();
+  });
+
+  test('multiple add at one position', async () => {
+    const dateValue = new Date();
+
+    /** hash is 507 */
+    model.set("France", 'model_value');
+    model.set("Spain", 'model_value 2');
+    model.set("Sapin", 5555);
+    model.set("ǻ", dateValue);
+
+    expect(model.display()).toEqual({
+      '507': [['Spain', 'model_value 2'], ['Sapin', 5555], ['ǻ', dateValue]],
+      '591': [['France', 'model_value']]
+    });
+  });
+
+  test('add remove multiple', async () => {
+    ['model_value', 'model_value 2', 5555, new Date()].forEach((item) => {
+      model.set('model_key', item);
+      expect(model.get('model_key')).toBe(item);
+    });
 
     model.remove('model_key');
+    expect(model.get('model_key')).toBe(undefined);
+  });
 
-    expect(model.lookup('model_key')).toBe(undefined);
+  test('add remove multiple array', async () => {
+    const arrValue = ['model_value', 'model_value 2', 5555, new Date()];
+
+    model.set('model_key', arrValue);
+    expect(model.get('model_key')).toBe(arrValue);
+
+    model.remove('model_key');
+    expect(model.get('model_key')).toBe(undefined);
   });
 
   test('multiple value key', () => {
-    const model = new HashTable();
-
-    model.add('model_key', 'model_value');
-    model.add('model_key', 'model_value_MORE');
+    model.set('model_key', 'model_value');
+    model.set('model_key', 'model_value_MORE');
 
     // перезапись того же ключа
-    expect(model.lookup('model_key')).toBe('model_value_MORE');
+    expect(model.get('model_key')).toBe('model_value_MORE');
   });
 
   test('multiple value the same hash key', () => {
-    const model = new HashTable();
-
     // разные значения, но один хэш
-    model.add(555, 'model_value');
-    model.add('', 'model_value_MORE');
+    model.set(555, 'model_value');
+    model.set('', 'model_value_MORE');
 
     expect(model.storage['0'].length).toBe(2);
-    expect(model.lookup(555)).toBe('model_value');
-    expect(model.lookup('')).toBe('model_value_MORE');
+    expect(model.get(555)).toBe('model_value');
+    expect(model.get('')).toBe('model_value_MORE');
   });
 
   test('key doesn\'t exists', () => {
-    const model = new HashTable();
-
     expect(model.remove('model_key')).toBe(false);
   });
 });

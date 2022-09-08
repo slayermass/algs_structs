@@ -4,15 +4,25 @@
  *
  *    add - добавить пару ключ/значение
  *    remove - удалить пару
- *    lookup - найти значение по ключу
+ *    get - найти значение по ключу
  */
 class HashTable {
   constructor() {
     this.storage = {}; // {}?
   }
 
-  add(key, value) {
-    let index = hash(key);
+  // простое хэширование для примера
+  _hash(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      hash += str.charCodeAt(i);
+    }
+    return hash & hash; // 32bit integer
+  }
+
+  set(key, value) {
+    const index = this._hash(key);
+
     if (this.storage[index] === undefined) {
       this.storage[index] = [
         [key, value]
@@ -32,13 +42,13 @@ class HashTable {
   }
 
   isKeyExists(key) {
-    let index = hash(key);
+    const index = this._hash(key);
     const val = this.storage[index];
     return !!(val && Array.isArray(val));
   }
 
   remove(key) {
-    let index = hash(key);
+    const index = this._hash(key);
     const val = this.storage[index];
 
     if (!this.isKeyExists(key)) {
@@ -56,8 +66,8 @@ class HashTable {
     }
   }
 
-  lookup(key) {
-    let index = hash(key);
+  get(key) {
+    const index = this._hash(key);
     const val = this.storage[index];
 
     if (!this.isKeyExists(key)) {
@@ -70,16 +80,10 @@ class HashTable {
       }
     }
   }
-}
 
-// простое хэширование для примера
-function hash(str) {
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-    hash += str.charCodeAt(i);
+  display() {
+    return this.storage;
   }
-  return hash & hash; // 32bit integer
 }
-
 
 module.exports = HashTable;
