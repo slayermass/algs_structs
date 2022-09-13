@@ -12,7 +12,9 @@ const RLEEncode = (str) => {
   let result = '';
   let counter = 0
 
-  for (let i = 0; i <= str.length; ++i) {
+  // на последней итерации (undefined) всегда заходит в else
+  // т.к. из str.length не отнимается 1
+  for (let i = 0; i <= str.length; i++) {
     if (str[i] === str[i + 1]) {
       counter++;
     } else {
@@ -30,8 +32,22 @@ const RLEEncode = (str) => {
  * @returns {string}
  */
 const RLEDecode = (str) => {
-  // TODO
-  return str
+  if (!/^[A-Z0-9]+$/.test(str) || /^[0-9]/.test(str)) {
+    return 'invalid string';
+  }
+
+  // массив из символов по 1
+  const chars = str.split(/[0-9]+/).filter((v) => v).join('').split('');
+  // массив из чисел по 1 соответствующий символам
+  const numbers = str.split(/[A-Z]/);
+  numbers.shift(); // удалить пустую строку
+
+  // символов всегда больше и надо к ним подбирать число
+  return chars.reduce((result, char, index) => {
+    result += (numbers[index]) ? `${new Array(Number(numbers[index])).fill(char).join('')}` : char;
+
+    return result
+  }, '');
 }
 
 module.exports = {RLEEncode, RLEDecode}
