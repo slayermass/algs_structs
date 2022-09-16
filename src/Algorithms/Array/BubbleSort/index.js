@@ -6,17 +6,17 @@
  * память     - O(1)
  */
 const bubbleSort = (arr) => {
-  const ret = arr;
-  for (let j = ret.length - 1; j > 0; j--) {
+  // клонировать arr? сейчас мутирует
+  for (let j = arr.length - 1; j > 0; j--) {
     for (let i = 0; i < j; i++) {
-      if (ret[i] > ret[i + 1]) {
-        let temp = ret[i];
-        ret[i] = ret[i + 1];
-        ret[i + 1] = temp;
+      if (arr[i] > arr[i + 1]) {
+        const temp = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
       }
     }
   }
-  return ret;
+  return arr;
 }
 
 module.exports = bubbleSort;

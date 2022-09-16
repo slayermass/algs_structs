@@ -12,9 +12,8 @@ const RLEEncode = (str) => {
   let result = '';
   let counter = 0
 
-  // на последней итерации (undefined) всегда заходит в else
-  // т.к. из str.length не отнимается 1
-  for (let i = 0; i <= str.length; i++) {
+  // на последней итерации (anychar === undefined) всегда заходит в else
+  for (let i = 0; i <= str.length -1; i++) {
     if (str[i] === str[i + 1]) {
       counter++;
     } else {

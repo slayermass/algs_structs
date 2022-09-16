@@ -9,6 +9,7 @@ describe('--- RLEEncode ---', () => {
     expect(RLEEncode('ABB')).toEqual('AB2');
     expect(RLEEncode('ABC')).toEqual('ABC');
     expect(RLEEncode('AB')).toEqual('AB');
+    expect(RLEEncode('A')).toEqual('A');
   });
 
   test('invalid', () => {
@@ -28,6 +29,7 @@ describe('--- RLEDecode ---', () => {
     expect(RLEDecode('ABC')).toEqual('ABC');
     expect(RLEDecode('AB2')).toEqual('ABB');
     expect(RLEDecode('AB')).toEqual('AB');
+    expect(RLEDecode('A')).toEqual('A');
   });
 
   test('invalid', () => {
