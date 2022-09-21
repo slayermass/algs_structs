@@ -20,7 +20,7 @@ const getArrayFilledRandomIntegers = (arrayLength) => new Array(arrayLength).fil
  * @param removeDuplicates {boolean}
  * @returns {number[]}
  */
-const sortIntegerArray = (arr, removeDuplicates = false) => removeDuplicates ? [...new Set(arr.sort((a, b) => a - b))] : arr.sort((a, b) => a - b);
+const sortIntegerArray = (arr, removeDuplicates = false) => removeDuplicates ? [...new Set(new Uint16Array(arr).sort())] : arr.sort((a, b) => a - b);
 
 module.exports = {
   getRandomInteger,
