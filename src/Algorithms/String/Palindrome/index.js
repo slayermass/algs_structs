@@ -23,4 +23,13 @@ const isPalindrome = (string) => {
   return true;
 }
 
-module.exports = isPalindrome
+const isPalindromeToLower = (string) => {
+  if (!/^[A-Za-z]+$/.test(string)) { // only letter strings
+    return false
+  }
+
+  const lowerString = string.toLowerCase();
+  return lowerString === lowerString.split('').reverse().join('')
+}
+
+module.exports = {isPalindrome, isPalindromeToLower}
