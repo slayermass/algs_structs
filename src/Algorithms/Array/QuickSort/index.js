@@ -2,7 +2,7 @@
  * quick sort
  *
  * сложность  - О(n log n) | O(n*n) - худшее
- * память     - ?
+ * память     - O(log n) | O(n)
  */
 const arrayQuickSort = (arr) => {
   if (arr.length <= 1) {
